@@ -1,0 +1,43 @@
+PROJECT 01 — CHỐT GIAO DIỆN v0.6
+Yêu cầu ngày 13/10/2026: làm web rõ chữ, gọn, dễ dùng cho người mới; tổng quan hồ sơ, hành trình bốn bước, biểu đồ và PDF.
+
+1. Thiết kế
+Nền xanh xám rất nhạt #F4F7FB; chữ chính navy #172B4D; chữ phụ #52647A; điểm nhấn teal #087F8C; cảnh báo màu vàng/đỏ có chữ giải thích. Không chỉ dựa vào màu.
+Font giao diện hệ thống: Segoe UI/Arial/sans-serif; nội dung khoảng 16–17 px, nhãn 14–16 px; tiêu đề 26–36 px; khoảng cách 8/16/24 px. Không ép font nhỏ để nhét bảng. Bảo đảm tương phản ở theme sáng và tối.
+Các khối tóm tắt, nút, biểu tượng nhỏ và khoảng trắng thống nhất. Nhãn bằng tiếng Việt, diễn giải DTI là tỷ lệ trả nợ/thu nhập. Nội dung dài và kỹ thuật nằm trong mục mở rộng.
+
+2. Trang Tổng quan
+Danh sách các hồ sơ trong phiên, tên người vay, nguồn đã nhận, trạng thái, tiến độ, số cảnh báo, nút chọn/mở hồ sơ.
+Đầu trang hồ sơ: trạng thái rà soát, thu nhập đã xác minh, DTI, cảnh báo chính và việc cần làm tiếp.
+Chỉ tiêu chưa xác minh hiện “Chưa có”, không biến null thành 0. Kết quả mẫu được gắn nhãn đã lưu, không phải Gemini vừa chạy.
+Giữ từng hồ sơ trong phiên khi chuyển qua hồ sơ khác; dữ liệu vẫn có thể mất khi phiên/ máy chủ kết thúc. Không gọi đây là cơ sở dữ liệu lâu dài.
+
+3. Hành trình bốn bước
+01 Hồ sơ: chọn mẫu hoặc tải PDF/PDF/CSV, xem ba nguồn, chạy trích xuất Gemini.
+02 Kiểm tra: đối chiếu trường với nguồn, xác nhận trích xuất, phân loại giao dịch, xác minh nguồn thu/kỳ sao kê.
+03 Phân tích: xem chỉ số Python, biểu đồ thu nhập giữa nguồn, phân bổ trả nợ, cảnh báo và căn cứ; thay giả định lãi suất khi cần.
+04 Báo cáo: chạy LLM viết nháp, đọc báo cáo có tham chiếu, xác nhận nội dung và tải PDF/TXT/ZIP.
+Chatbox là khu vực hỗ trợ riêng, không phải bước xác nhận thay con người.
+Thanh tiến độ thể hiện checkpoint thực tế. Nút bước tiếp theo và hướng dẫn nêu việc cần hoàn thành. Thiếu dữ liệu chặn việc xác minh/tính chính thức, nhưng vẫn cho xem cảnh báo và tạo báo cáo thiếu thông tin. Không ép hồ sơ lỗi thành hoàn tất.
+
+4. Biểu đồ
+Tiến độ là tiến độ xử lý hồ sơ hướng đến báo cáo đã kiểm tra, không phải điểm tín dụng/tiến độ tiết kiệm hoặc khả năng được duyệt vay.
+So sánh thu nhập khai báo, giấy xác nhận và thu nhập đã xác minh; chỉ vẽ giá trị thực có, ghi rõ nguồn.
+Khi đủ chỉ số, biểu đồ nghĩa vụ nợ hiện tại + khoản trả mới + phần thu nhập còn lại sau trả nợ; phần còn lại chưa trừ chi phí sinh hoạt, không gọi là tiền tiết kiệm.
+Hồ sơ chưa đủ dữ liệu không vẽ chỉ số giả. Biểu đồ có nhãn và bảng số liệu thay thế.
+
+5. PDF
+Xuất Credit Review Summary thực tế của hồ sơ đang mở, có font tiếng Việt nhúng, bảng chỉ số, biểu đồ, cảnh báo, thông tin thiếu, câu hỏi, nguồn tham chiếu, giới hạn và trạng thái Draft/Reviewed.
+Chưa có báo cáo thì nút PDF không bật và giải thích cần tạo bản nháp.
+Reviewed không có nghĩa phê duyệt vay. Có thể xuất bản nháp nhưng PDF phải ghi rõ trạng thái.
+Giữ TXT/JSON/ZIP và nhật ký trong mục tải nâng cao.
+
+6. Phạm vi kiểm tra
+Giữ công thức, validators, ba điểm xác nhận, mức uncertain và source trace; dữ liệu người truy cập tách theo phiên.
+Kiểm thử điều hướng, chuyển hồ sơ không lẫn dữ liệu, điều kiện chặn, biểu đồ khi thiếu dữ liệu, PDF tiếng Việt không cắt chữ, xuất ZIP.
+Chưa coi API và chatbox đã đạt nghiệm thu thật khi Gemini còn báo 503. Giao diện nâng cấp không tự giải quyết hạn mức/ quyền/ quá tải dịch vụ.
+
+7. Cập nhật web
+Đóng gói ZIP v0.6 và launcher streamlit_app.py tương ứng để tránh lỗi upload thư mục bị phẳng như lần trước.
+Người dùng chỉ upload ZIP mới và thay launcher ở gốc GitHub; giữ Secrets riêng của Streamlit, không đưa khóa vào mã.
+Link đang dùng giữ nguyên khi cập nhật cùng ứng dụng. Chưa tuyên bố bản live đổi giao diện khi người dùng chưa cập nhật mã.

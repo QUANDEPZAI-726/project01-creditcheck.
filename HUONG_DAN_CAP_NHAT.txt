@@ -1,0 +1,55 @@
+CREDITCHECK v0.6 — GIAO DIỆN VÀ BÁO CÁO PDF
+
+ĐIỂM MỚI
+Trang Tổng quan liệt kê hồ sơ trong phiên, trạng thái, nguồn, tiến độ và cảnh báo.
+Hành trình bốn bước: Hồ sơ → Kiểm tra → Phân tích → Báo cáo; chatbox hỗ trợ riêng.
+Đầu trang có trạng thái, thu nhập đã xác minh, DTI và cảnh báo chính; việc cần làm tiếp được giải thích.
+Tiến độ dạng vòng và bốn checkpoint; so sánh thu nhập theo nguồn; biểu đồ nghĩa vụ trả nợ.
+Giữ công thức và các điểm xác nhận cũ. Chưa có thu nhập xác minh thì chưa có DTI, không vẽ số giả.
+JSON và nhật ký nằm trong mục nâng cao. Nội dung báo cáo trình bày theo các phần, mở được nguồn.
+PDF có tiếng Việt, chỉ số, biểu đồ, nguồn, giới hạn và trạng thái; ZIP có thêm summary.pdf khi đã có báo cáo.
+Giữ kết quả từng hồ sơ khi chuyển trong phiên. Không bảo đảm lưu sau khi đóng/tải lại tab hoặc máy chủ khởi động lại.
+Gemini 503 vẫn là lỗi quá tải dịch vụ. Bản giao diện không tự sửa quota/quyền. Có hiển thị lỗi cụ thể và che khóa.
+
+CẬP NHẬT WEB ĐANG CÓ — KHÔNG UPLOAD LẠI TỪNG THƯ MỤC
+1. Tải và giải nén CreditCheck_GiaoDien_v06_CAP_NHAT.zip.
+2. Bên trong có: Project01_CreditCheck_Gemini_v06.zip, streamlit_app.py, requirements.txt, hướng dẫn này và PDF mẫu.
+3. Vào repository GitHub QUANDEPZAI-726/project01-creditcheck. trên nhánh main.
+4. Add file / dấu + → Upload files. Chọn đúng BA TỆP từ gói cập nhật: Project01_CreditCheck_Gemini_v06.zip, streamlit_app.py, requirements.txt.
+5. Commit changes để ghi đè streamlit_app.py và requirements.txt, thêm ZIP v0.6.
+6. Giữ nguyên Main file path ở Streamlit là streamlit_app.py. Giữ Secrets riêng; không upload khóa.
+7. Đợi Streamlit cập nhật. Nếu không đổi, Manage app → Reboot app. Chỉ reboot sau khi tải ZIP của dữ liệu phiên cần giữ.
+8. Web mới có Tổng quan và bốn bước. Link đang dùng không cần thay khi cập nhật cùng ứng dụng.
+Không upload nguyên gói CreditCheck_GiaoDien_v06_CAP_NHAT.zip vào GitHub để chạy; gói đó dùng để giao ba tệp cần cập nhật.
+ZIP v0.5 và các tệp bị upload phẳng cũ có thể để lại; launcher mới đọc đúng ZIP v0.6.
+
+CHẠY THỬ KHÔNG GỌI API
+Hồ sơ → Khôi phục HS01 đã kiểm tra · kết quả lưu v0.4.
+Tổng quan: tiến độ 4/4 nhưng vẫn cần người thẩm định rà soát, không duyệt vay.
+Phân tích: thu nhập 20 triệu, PMT 4.707.347 VND, DTI 33,54%, lệch 0%; hai biểu đồ có nhãn.
+Báo cáo: đọc nội dung, tải PDF hoặc ZIP; PDF ghi Reviewed và Human review required.
+Tổng quan → mở HS03 → Phân tích: cảnh báo thu nhập 30 triệu/20 triệu và hai nguồn làm căn cứ. Chưa có chỉ số chính thức.
+Quay lại Tổng quan → mở HS01: kết quả đã kiểm tra được giữ trong phiên.
+HS02 thiếu sao kê; HS04 sai mã chủ tài khoản. Không ép các hồ sơ này thành hoàn tất.
+HS05 phải phân loại bằng LLM trước khi hiện cảnh báo uncertain; không tự tạo kết quả mới bằng đáp án chuẩn.
+
+CHẠY THẬT GEMINI
+Mở quyền API trong mục Kết nối Gemini ở thanh bên; giữ khóa trong Secrets.
+Hồ sơ: chạy trích xuất → Kiểm tra: đối chiếu và xác nhận, chạy phân loại, kiểm tra/xác minh thu nhập → Phân tích: đọc chỉ số/cảnh báo → Báo cáo: tạo nháp và kiểm tra nội dung.
+Mỗi nút API yêu cầu đồng ý gửi dữ liệu giả lập. Câu trả lời có tham chiếu vẫn cần kiểm tra ý nghĩa.
+Nếu 503, đợi rồi thử lại sau; không coi kết quả mẫu là lần gọi API mới.
+
+GIỚI HẠN KIỂM THỬ
+test_results.txt ghi kiểm thử Python và framework Streamlit, bao gồm API mô phỏng; không phải accuracy Gemini hay kiểm thử trình duyệt thật.
+PDF mẫu đã render và xem hai trang để kiểm tra chữ, bố cục. PDF động có thể nhiều trang tùy nội dung, không cố định hai trang.
+Chưa cập nhật web live cho đến khi người dùng tải ba tệp vào GitHub.
+Không có đăng nhập xác thực danh tính reviewer, không có cơ sở dữ liệu lâu dài; đây là prototype học tập dùng dữ liệu giả lập.
+Các chỉ số/giả định có thể kiểm tra, nhưng không phải chính sách ngân hàng hoặc quyết định tín dụng.
+
+CHẠY TẠI MÁY
+Giải nén Project01_CreditCheck_Gemini_v06.zip để có cấu trúc nguồn đầy đủ.
+Python 3.12:
+python -m pip install -r requirements.txt
+python -m streamlit run streamlit_app.py
+python -m unittest discover -s tests -v
+Tệp .streamlit/config.toml trong nguồn có theme sáng; giao diện có CSS tương phản để hạn chế xung đột theme. Đừng commit secrets.toml thật.

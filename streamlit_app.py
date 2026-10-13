@@ -1,57 +1,28 @@
+"""Deployment entry point for the intact CreditCheck v0.6 source bundle."""
 from pathlib import Path
 import hashlib
 import runpy
+import sys
 import tempfile
 import zipfile
 import streamlit as st
 
-BUNDLE = Path(__file__).resolve().parent / "Project01_CreditCheck_Gemini_v05.zip"
+BUNDLE=Path(__file__).resolve().parent/'Project01_CreditCheck_Gemini_v06.zip'
 
 @st.cache_resource
 def unpack_bundle():
-    expected = "6d51b5567d60a92b04d4b5851806b708553380d42fc399b6726edefe2d1267f4"
-    if hashlib.sha256(BUNDLE.read_bytes()).hexdigest() != expected:
-        raise ValueError("ZIP không đúng phiên bản v0.5.")
-
-    folder = Path(tempfile.mkdtemp(prefix="creditcheck_"))
-    with zipfile.ZipFile(BUNDLE) as archive:
-        archive.extractall(folder)
+    expected='1a0fd9ef7e4821089fb59abce7141a6038d7ad6d1505d67ea6ad45c680475a1e'
+    if hashlib.sha256(BUNDLE.read_bytes()).hexdigest()!=expected:
+        raise ValueError('ZIP giao diện không đúng bản v0.6. Upload lại tệp gốc trong gói cập nhật.')
+    folder=Path(tempfile.mkdtemp(prefix='creditcheck_ui06_'))
+    with zipfile.ZipFile(BUNDLE) as archive:archive.extractall(folder)
     return folder
 
-import sys
-import re
-
-folder = unpack_bundle()
-sys.path.insert(0, str(folder / "app"))
-
-import gemini_service as gs
-
-if not hasattr(gs.GeminiClient, "_original_generate"):
-    gs.GeminiClient._original_generate = gs.GeminiClient.generate
-
-def diagnostic_generate(self, prompt):
-    try:
-        return self._original_generate(prompt)
-    except gs.GeminiError as error:
-        cause = error.__context__
-        if cause is None:
-            raise
-
-        detail = str(getattr(cause, "message", None) or str(cause))
-        detail = detail.replace(self.api_key, "[KEY HIDDEN]")
-        detail = re.sub(
-            r"(?:AIza[A-Za-z0-9_-]+|AQ\.[A-Za-z0-9_.-]+)",
-            "[KEY HIDDEN]",
-            detail
-        )
-        status = getattr(cause, "code", None) or type(cause).__name__
-        raise gs.GeminiError(
-            f"Gemini [{status}]: {detail[:500]}"
-        ) from None
-
-gs.GeminiClient.generate = diagnostic_generate
-
-runpy.run_path(
-    str(folder / "streamlit_app.py"),
-    run_name="__main__"
-)
+folder=unpack_bundle()
+# Source modules can survive a Streamlit rerun; switch to the new bundle once.
+for name in ('core','phase2','phase3','traceability','gemini_service','sample_data','presentation','pdf_report'):
+    module=sys.modules.get(name)
+    if module is not None and getattr(module,'__file__',None) and not Path(module.__file__).resolve().is_relative_to(folder):
+        del sys.modules[name]
+sys.path.insert(0,str(folder/'app'))
+runpy.run_path(str(folder/'streamlit_app.py'),run_name='__main__')
