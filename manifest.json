@@ -1,22 +1,22 @@
 {
-  "case_id": "HS05",
+  "case_id": "HS01",
   "dataset_id": "CC-SYNTH-20261008",
   "dataset_version": "1.0.0",
   "documents": [
     {
-      "document_id": "HS05-APP",
+      "document_id": "HS01-APP",
       "source_type": "application",
       "path": "application.pdf",
       "available": true
     },
     {
-      "document_id": "HS05-INC",
+      "document_id": "HS01-INC",
       "source_type": "income_certificate",
       "path": "income_certificate.pdf",
       "available": true
     },
     {
-      "document_id": "HS05-BANK",
+      "document_id": "HS01-BANK",
       "source_type": "bank_statement",
       "path": "bank_statement.csv",
       "available": true,

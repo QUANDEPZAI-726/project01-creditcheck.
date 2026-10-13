@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CreditCheck processing result v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "flags",
+    "metrics",
+    "missing_fields",
+    "verification_questions",
+    "summary",
+    "llm_runs"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "message",
+          "evidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "enum": [
+              "MISSING_BANK_STATEMENT",
+              "INCOME_MISMATCH",
+              "BORROWER_ID_MISMATCH",
+              "AMBIGUOUS_INCOME",
+              "HIGH_DTI"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "document_id",
+                "locator_type",
+                "locator",
+                "quote"
+              ],
+              "properties": {
+                "document_id": {
+                  "type": "string"
+                },
+                "locator_type": {
+                  "type": "string",
+                  "enum": [
+                    "pdf_page_field",
+                    "csv_transaction_id"
+                  ]
+                },
+                "locator": {
+                  "type": "string"
+                },
+                "quote": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "monthly_payment_vnd",
+        "validated_monthly_income_vnd",
+        "dti_pct",
+        "income_gap_pct"
+      ],
+      "properties": {
+        "monthly_payment_vnd": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "validated_monthly_income_vnd": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "dti_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "income_gap_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "missing_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verification_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "summary": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "llm_runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "task",
+          "mode",
+          "model",
+          "run_at"
+        ],
+        "properties": {
+          "task": {
+            "enum": [
+              "extraction",
+              "classification",
+              "summary"
+            ]
+          },
+          "mode": {
+            "enum": [
+              "LIVE_API",
+              "ASSISTED",
+              "REPLAY"
+            ]
+          },
+          "model": {
+            "type": "string"
+          },
+          "run_at": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

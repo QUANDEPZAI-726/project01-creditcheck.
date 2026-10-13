@@ -1,0 +1,28 @@
+{
+  "case_id": "HS04",
+  "dataset_id": "CC-SYNTH-20261008",
+  "dataset_version": "1.0.0",
+  "documents": [
+    {
+      "document_id": "HS04-APP",
+      "source_type": "application",
+      "path": "application.pdf",
+      "available": true
+    },
+    {
+      "document_id": "HS04-INC",
+      "source_type": "income_certificate",
+      "path": "income_certificate.pdf",
+      "available": true
+    },
+    {
+      "document_id": "HS04-BANK",
+      "source_type": "bank_statement",
+      "path": "bank_statement.csv",
+      "available": true,
+      "coverage_start": "2026-07-01",
+      "coverage_end": "2026-09-30",
+      "coverage_complete": true
+    }
+  ]
+}

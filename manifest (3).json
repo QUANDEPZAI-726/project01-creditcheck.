@@ -1,0 +1,28 @@
+{
+  "case_id": "HS02",
+  "dataset_id": "CC-SYNTH-20261008",
+  "dataset_version": "1.0.0",
+  "documents": [
+    {
+      "document_id": "HS02-APP",
+      "source_type": "application",
+      "path": "application.pdf",
+      "available": true
+    },
+    {
+      "document_id": "HS02-INC",
+      "source_type": "income_certificate",
+      "path": "income_certificate.pdf",
+      "available": true
+    },
+    {
+      "document_id": "HS02-BANK",
+      "source_type": "bank_statement",
+      "path": null,
+      "available": false,
+      "coverage_start": null,
+      "coverage_end": null,
+      "coverage_complete": false
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CreditCheck shared case contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "currency",
+    "documents",
+    "transactions",
+    "review"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "currency": {
+      "const": "VND"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "document_id",
+          "source_type",
+          "available",
+          "fields"
+        ],
+        "properties": {
+          "document_id": {
+            "type": "string"
+          },
+          "source_type": {
+            "enum": [
+              "application",
+              "income_certificate",
+              "bank_statement"
+            ]
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "case_id": {
+                "$ref": "#/definitions/field"
+              },
+              "borrower_id": {
+                "$ref": "#/definitions/field"
+              },
+              "full_name": {
+                "$ref": "#/definitions/field"
+              },
+              "employer": {
+                "$ref": "#/definitions/field"
+              },
+              "net_monthly_income_vnd": {
+                "$ref": "#/definitions/field"
+              },
+              "loan_principal_vnd": {
+                "$ref": "#/definitions/field"
+              },
+              "term_months": {
+                "$ref": "#/definitions/field"
+              },
+              "existing_monthly_debt_vnd": {
+                "$ref": "#/definitions/field"
+              },
+              "document_date": {
+                "$ref": "#/definitions/field"
+              },
+              "employment_start": {
+                "$ref": "#/definitions/field"
+              },
+              "employment_end": {
+                "$ref": "#/definitions/field"
+              },
+              "account_holder_id": {
+                "$ref": "#/definitions/field"
+              },
+              "period_start": {
+                "$ref": "#/definitions/field"
+              },
+              "period_end": {
+                "$ref": "#/definitions/field"
+              }
+            }
+          }
+        }
+      }
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "transaction_id",
+          "date",
+          "direction",
+          "amount_vnd",
+          "account_holder_id",
+          "counterparty",
+          "description",
+          "llm_label",
+          "evidence"
+        ],
+        "properties": {
+          "transaction_id": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "direction": {
+            "enum": [
+              "credit",
+              "debit"
+            ]
+          },
+          "amount_vnd": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "account_holder_id": {
+            "type": "string"
+          },
+          "counterparty": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "llm_label": {
+            "enum": [
+              "salary",
+              "other",
+              "uncertain",
+              null
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/evidence"
+            }
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "data_status",
+        "summary_status",
+        "reviewer_name",
+        "reviewer_identity_verified",
+        "reviewed_at",
+        "reason"
+      ],
+      "properties": {
+        "data_status": {
+          "enum": [
+            "Insufficient information",
+            "Human review required",
+            "Validated for summary"
+          ]
+        },
+        "summary_status": {
+          "enum": [
+            "Draft",
+            "Summary reviewed"
+          ]
+        },
+        "reviewer_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewer_identity_verified": {
+          "type": "boolean"
+        },
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "evidence"
+      ],
+      "properties": {
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/evidence"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document_id",
+        "locator_type",
+        "locator",
+        "quote"
+      ],
+      "properties": {
+        "document_id": {
+          "type": "string"
+        },
+        "locator_type": {
+          "type": "string",
+          "enum": [
+            "pdf_page_field",
+            "csv_transaction_id"
+          ]
+        },
+        "locator": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
