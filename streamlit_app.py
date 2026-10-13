@@ -30,3 +30,5 @@ logo_path = Path(__file__).resolve().parent / "logo.png"
 
 if logo_path.exists():
     st.sidebar.image(str(logo_path), width=160)
+else:
+    st.sidebar.error("Không tìm thấy logo.png cạnh streamlit_app.py")
