@@ -26,9 +26,11 @@ for name in ('core','phase2','phase3','traceability','gemini_service','sample_da
         del sys.modules[name]
 sys.path.insert(0,str(folder/'app'))
 runpy.run_path(str(folder/'streamlit_app.py'),run_name='__main__')
-logo_path = Path(__file__).resolve().parent / "logo.png"
+logo_path = Path(__file__).resolve().parent / (
+    "1790301130067_5325247545233387896_g6287506212488219102_01bae03835e1c999662e363ca9e66ec9.jpg"
+)
 
 if logo_path.exists():
     st.sidebar.image(str(logo_path), width=160)
 else:
-    st.sidebar.error("Không tìm thấy logo.png cạnh streamlit_app.py")
+    st.sidebar.error("Không tìm thấy ảnh logo")
