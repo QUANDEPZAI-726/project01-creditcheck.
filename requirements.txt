@@ -3,3 +3,4 @@ google-genai==2.30.1
 pypdf==6.10.0
 reportlab==4.4.9
 altair==6.3.0
+cryptography==50.0.2
