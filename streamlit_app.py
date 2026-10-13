@@ -18,7 +18,40 @@ def unpack_bundle():
         archive.extractall(folder)
     return folder
 
+import sys
+import re
+
+folder = unpack_bundle()
+sys.path.insert(0, str(folder / "app"))
+
+import gemini_service as gs
+
+if not hasattr(gs.GeminiClient, "_original_generate"):
+    gs.GeminiClient._original_generate = gs.GeminiClient.generate
+
+def diagnostic_generate(self, prompt):
+    try:
+        return self._original_generate(prompt)
+    except gs.GeminiError as error:
+        cause = error.__context__
+        if cause is None:
+            raise
+
+        detail = str(getattr(cause, "message", None) or str(cause))
+        detail = detail.replace(self.api_key, "[KEY HIDDEN]")
+        detail = re.sub(
+            r"(?:AIza[A-Za-z0-9_-]+|AQ\.[A-Za-z0-9_.-]+)",
+            "[KEY HIDDEN]",
+            detail
+        )
+        status = getattr(cause, "code", None) or type(cause).__name__
+        raise gs.GeminiError(
+            f"Gemini [{status}]: {detail[:500]}"
+        ) from None
+
+gs.GeminiClient.generate = diagnostic_generate
+
 runpy.run_path(
-    str(unpack_bundle() / "streamlit_app.py"),
+    str(folder / "streamlit_app.py"),
     run_name="__main__"
 )
