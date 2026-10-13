@@ -1,0 +1,140 @@
+test_hs03_pdf_and_no_auto_review (test_assisted_io.AssistedTests.test_hs03_pdf_and_no_auto_review) ... ok
+test_hs04_and_hs05_still_block_income (test_assisted_io.AssistedTests.test_hs04_and_hs05_still_block_income) ... ok
+test_missing_source_report (test_assisted_io.AssistedTests.test_missing_source_report) ... ok
+test_rule_zip_cannot_be_relabelled_as_llm (test_assisted_io.AssistedTests.test_rule_zip_cannot_be_relabelled_as_llm) ... ok
+test_ui_rule_pdf_without_api (test_assisted_io.AssistedTests.test_ui_rule_pdf_without_api) ... 2026-10-13 13:36:09.275 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_ui_saved_candidate_requires_and_preserves_review (test_assisted_io.AssistedTests.test_ui_saved_candidate_requires_and_preserves_review) ... 2026-10-13 13:36:10.564 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_wrong_case_source_stale_report_and_bad_imports (test_assisted_io.AssistedTests.test_wrong_case_source_stale_report_and_bad_imports) ... ok
+test_zip_only_reads_candidate_not_reviews (test_assisted_io.AssistedTests.test_zip_only_reads_candidate_not_reviews) ... ok
+test_all_five (test_core.CoreTests.test_all_five) ... ok
+test_csv_duplicate (test_core.CoreTests.test_csv_duplicate) ... ok
+test_edit_rejects_wrong_source_value (test_core.CoreTests.test_edit_rejects_wrong_source_value) ... ok
+test_empty_csv (test_core.CoreTests.test_empty_csv) ... ok
+test_happy_baseline (test_core.CoreTests.test_happy_baseline) ... ok
+test_human_edit_clears_review (test_core.CoreTests.test_human_edit_clears_review) ... ok
+test_identity_mismatch (test_core.CoreTests.test_identity_mismatch) ... ok
+test_import_rejects_duplicate_doc (test_core.CoreTests.test_import_rejects_duplicate_doc) ... ok
+test_import_rejects_fabricated_quote (test_core.CoreTests.test_import_rejects_fabricated_quote) ... ok
+test_import_rejects_missing_field (test_core.CoreTests.test_import_rejects_missing_field) ... ok
+test_import_rejects_wrong_case (test_core.CoreTests.test_import_rejects_wrong_case) ... ok
+test_import_rejects_wrong_page (test_core.CoreTests.test_import_rejects_wrong_page) ... ok
+test_import_valid_fixture (test_core.CoreTests.test_import_valid_fixture) ... ok
+test_income_mismatch (test_core.CoreTests.test_income_mismatch) ... ok
+test_invalid_pdf (test_core.CoreTests.test_invalid_pdf) ... ok
+test_missing_statement (test_core.CoreTests.test_missing_statement) ... ok
+test_no_auto_classification (test_core.CoreTests.test_no_auto_classification) ... ok
+test_pathlike_case_rejected (test_core.CoreTests.test_pathlike_case_rejected) ... ok
+test_prompt_has_no_answers (test_core.CoreTests.test_prompt_has_no_answers) ... ok
+test_review_block_mismatch (test_core.CoreTests.test_review_block_mismatch) ... ok
+test_review_block_missing (test_core.CoreTests.test_review_block_missing) ... ok
+test_review_is_limited (test_core.CoreTests.test_review_is_limited) ... ok
+test_stale_revision (test_core.CoreTests.test_stale_revision) ... ok
+test_threshold_boundary (test_core.CoreTests.test_threshold_boundary) ... ok
+test_unknown_template_returns_null (test_core.CoreTests.test_unknown_template_returns_null) ... ok
+test_api_failure_is_transactional (test_gemini.GeminiWorkflowTests.test_api_failure_is_transactional) ... ok
+test_chat_is_read_only (test_gemini.GeminiWorkflowTests.test_chat_is_read_only) ... ok
+test_chat_question_length_limit (test_gemini.GeminiWorkflowTests.test_chat_question_length_limit) ... ok
+test_chat_rejects_decision_language (test_gemini.GeminiWorkflowTests.test_chat_rejects_decision_language) ... ok
+test_chat_rejects_fabricated_refs (test_gemini.GeminiWorkflowTests.test_chat_rejects_fabricated_refs) ... ok
+test_classification_precondition_prevents_call (test_gemini.GeminiWorkflowTests.test_classification_precondition_prevents_call) ... ok
+test_classification_requires_human_income_review (test_gemini.GeminiWorkflowTests.test_classification_requires_human_income_review) ... ok
+test_extraction_uses_validator_and_no_auto_review (test_gemini.GeminiWorkflowTests.test_extraction_uses_validator_and_no_auto_review) ... ok
+test_summary_numbers_are_locked (test_gemini.GeminiWorkflowTests.test_summary_numbers_are_locked) ... ok
+test_summary_real_validator_sets_draft_only (test_gemini.GeminiWorkflowTests.test_summary_real_validator_sets_draft_only) ... ok
+test_two_states_are_independent (test_gemini.GeminiWorkflowTests.test_two_states_are_independent) ... ok
+test_wrong_case_keeps_state (test_gemini.GeminiWorkflowTests.test_wrong_case_keeps_state) ... ok
+test_bad_source_hash (test_phase2.Phase2Tests.test_bad_source_hash) ... ok
+test_debit_salary_rejected (test_phase2.Phase2Tests.test_debit_salary_rejected) ... ok
+test_duplicate_id_rejected (test_phase2.Phase2Tests.test_duplicate_id_rejected) ... ok
+test_fingerprint_change_clears_income (test_phase2.Phase2Tests.test_fingerprint_change_clears_income) ... ok
+test_hs01_metrics (test_phase2.Phase2Tests.test_hs01_metrics) ... ok
+test_hs03_gap_and_high_dti (test_phase2.Phase2Tests.test_hs03_gap_and_high_dti) ... ok
+test_identity_mismatch_blocks_income (test_phase2.Phase2Tests.test_identity_mismatch_blocks_income) ... ok
+test_income_mean_excludes_refunds (test_phase2.Phase2Tests.test_income_mean_excludes_refunds) ... ok
+test_invalid_period (test_phase2.Phase2Tests.test_invalid_period) ... ok
+test_invalid_rate (test_phase2.Phase2Tests.test_invalid_rate) ... ok
+test_label_edit_clears_income (test_phase2.Phase2Tests.test_label_edit_clears_income) ... ok
+test_metrics_null_before_human (test_phase2.Phase2Tests.test_metrics_null_before_human) ... ok
+test_missing_statement_blocks (test_phase2.Phase2Tests.test_missing_statement_blocks) ... ok
+test_preserves_seed_review (test_phase2.Phase2Tests.test_preserves_seed_review) ... ok
+test_rate_change_recomputes (test_phase2.Phase2Tests.test_rate_change_recomputes) ... ok
+test_reimport_clears_income (test_phase2.Phase2Tests.test_reimport_clears_income) ... ok
+test_stale_version (test_phase2.Phase2Tests.test_stale_version) ... ok
+test_uncertain_blocks_verification (test_phase2.Phase2Tests.test_uncertain_blocks_verification) ... ok
+test_zero_income_no_division (test_phase2.Phase2Tests.test_zero_income_no_division) ... ok
+test_zero_rate (test_phase2.Phase2Tests.test_zero_rate) ... ok
+test_browser_json_roundtrip (test_phase3.Phase3Tests.test_browser_json_roundtrip) ... ok
+test_decision_language_rejected (test_phase3.Phase3Tests.test_decision_language_rejected) ... ok
+test_export_marks_draft_and_provenance (test_phase3.Phase3Tests.test_export_marks_draft_and_provenance) ... ok
+test_flags_cannot_be_deleted (test_phase3.Phase3Tests.test_flags_cannot_be_deleted) ... ok
+test_html_rejected (test_phase3.Phase3Tests.test_html_rejected) ... ok
+test_import_stays_draft (test_phase3.Phase3Tests.test_import_stays_draft) ... ok
+test_label_change_invalidates_summary (test_phase3.Phase3Tests.test_label_change_invalidates_summary) ... ok
+test_metric_trace_ref_required (test_phase3.Phase3Tests.test_metric_trace_ref_required) ... ok
+test_missing_case_report_has_null_metrics (test_phase3.Phase3Tests.test_missing_case_report_has_null_metrics) ... ok
+test_missing_context_hash_rejected (test_phase3.Phase3Tests.test_missing_context_hash_rejected) ... ok
+test_missing_fields_not_collapsed (test_phase3.Phase3Tests.test_missing_fields_not_collapsed) ... ok
+test_no_attest_rejected (test_phase3.Phase3Tests.test_no_attest_rejected) ... ok
+test_no_model_rejected (test_phase3.Phase3Tests.test_no_model_rejected) ... ok
+test_numeric_comparison_keeps_types_and_values (test_phase3.Phase3Tests.test_numeric_comparison_keeps_types_and_values) ... ok
+test_prepared_is_current (test_phase3.Phase3Tests.test_prepared_is_current) ... ok
+test_preserves_user_verified_income (test_phase3.Phase3Tests.test_preserves_user_verified_income) ... ok
+test_prompt_contains_only_current_context (test_phase3.Phase3Tests.test_prompt_contains_only_current_context) ... ok
+test_rate_change_invalidates_reviewed_summary (test_phase3.Phase3Tests.test_rate_change_invalidates_reviewed_summary) ... ok
+test_reimport_clears_report_review (test_phase3.Phase3Tests.test_reimport_clears_report_review) ... ok
+test_restore_sync_preserves_content_review (test_phase3.Phase3Tests.test_restore_sync_preserves_content_review) ... ok
+test_review_keeps_human_review_status (test_phase3.Phase3Tests.test_review_keeps_human_review_status) ... ok
+test_review_without_reason_rejected (test_phase3.Phase3Tests.test_review_without_reason_rejected) ... ok
+test_review_without_summary_rejected (test_phase3.Phase3Tests.test_review_without_summary_rejected) ... ok
+test_review_without_two_checks_rejected (test_phase3.Phase3Tests.test_review_without_two_checks_rejected) ... ok
+test_source_edit_invalidates_summary (test_phase3.Phase3Tests.test_source_edit_invalidates_summary) ... ok
+test_stale_revision_rejected (test_phase3.Phase3Tests.test_stale_revision_rejected) ... ok
+test_tampered_borrower_rejected (test_phase3.Phase3Tests.test_tampered_borrower_rejected) ... ok
+test_tampered_metrics_rejected (test_phase3.Phase3Tests.test_tampered_metrics_rejected) ... ok
+test_tampered_status_rejected (test_phase3.Phase3Tests.test_tampered_status_rejected) ... ok
+test_unknown_ref_rejected (test_phase3.Phase3Tests.test_unknown_ref_rejected) ... ok
+test_missing_source_pdf_is_draft_with_null_metrics (test_presentation_pdf.PresentationPDFTests.test_missing_source_pdf_is_draft_with_null_metrics) ... ok
+test_navigation_callback (test_presentation_pdf.PresentationPDFTests.test_navigation_callback) ... 2026-10-13 13:36:12.302 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_next_disabled_until_income_review (test_presentation_pdf.PresentationPDFTests.test_next_disabled_until_income_review) ... 2026-10-13 13:36:12.662 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_pdf_requires_report (test_presentation_pdf.PresentationPDFTests.test_pdf_requires_report) ... ok
+test_pdf_vietnamese_metrics_provenance_and_font (test_presentation_pdf.PresentationPDFTests.test_pdf_vietnamese_metrics_provenance_and_font) ... ok
+test_reviewed_progress_not_approval (test_presentation_pdf.PresentationPDFTests.test_reviewed_progress_not_approval) ... ok
+test_switch_back_keeps_reviewed_case_in_session (test_presentation_pdf.PresentationPDFTests.test_switch_back_keeps_reviewed_case_in_session) ... 2026-10-13 13:36:13.089 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_unverified_metrics_are_not_charted_as_zero (test_presentation_pdf.PresentationPDFTests.test_unverified_metrics_are_not_charted_as_zero) ... ok
+test_ambiguous_income_links_exact_transaction (test_traceability.TraceTests.test_ambiguous_income_links_exact_transaction) ... ok
+test_hs01_has_no_invented_alert (test_traceability.TraceTests.test_hs01_has_no_invented_alert) ... ok
+test_identity_links_account_column (test_traceability.TraceTests.test_identity_links_account_column) ... ok
+test_ids_are_stable_unique (test_traceability.TraceTests.test_ids_are_stable_unique) ... ok
+test_income_mismatch_links_both_documents (test_traceability.TraceTests.test_income_mismatch_links_both_documents) ... ok
+test_linked_hash_matches_current_source (test_traceability.TraceTests.test_linked_hash_matches_current_source) ... ok
+test_metrics_alert_keeps_rule_and_salary_evidence (test_traceability.TraceTests.test_metrics_alert_keeps_rule_and_salary_evidence) ... ok
+test_missing_document_has_no_fake_quote (test_traceability.TraceTests.test_missing_document_has_no_fake_quote) ... ok
+test_preserves_user_summary_review (test_traceability.TraceTests.test_preserves_user_summary_review) ... ok
+test_trace_build_does_not_mutate_review (test_traceability.TraceTests.test_trace_build_does_not_mutate_review) ... ok
+test_all_nine_pages_without_key (test_ui.StreamlitTests.test_all_nine_pages_without_key) ... 2026-10-13 13:36:14.059 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_all_samples_and_session_isolation (test_ui.StreamlitTests.test_all_samples_and_session_isolation) ... 2026-10-13 13:36:14.770 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-13 13:36:15.140 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_api_no_credentials_keeps_state (test_ui.StreamlitTests.test_api_no_credentials_keeps_state) ... 2026-10-13 13:36:16.027 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_complete_api_workflow_with_mocked_transport (test_ui.StreamlitTests.test_complete_api_workflow_with_mocked_transport) ... 2026-10-13 13:36:16.629 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-13 13:36:16.992 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-13 13:36:17.045 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-13 13:36:17.352 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-13 13:36:17.627 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_restore_and_report_page (test_ui.StreamlitTests.test_restore_and_report_page) ... 2026-10-13 13:36:17.792 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_review_form_requires_checks (test_ui.StreamlitTests.test_review_form_requires_checks) ... 2026-10-13 13:36:18.347 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+
+----------------------------------------------------------------------
+Ran 119 tests in 9.724s
+
+OK

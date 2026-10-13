@@ -1,0 +1,7 @@
+CREDITCHECK v0.7 — CHỐT THAY ĐỔI TRƯỚC KHI SỬA
+1. Giữ giao diện bốn bước, công thức và xác nhận của con người.
+2. Bước Kiểm tra: nhập JSON/ZIP phân loại LLM đã lưu; chặn sai hồ sơ, sai nguồn, thiếu/lặp giao dịch. Có prompt để dùng ChatGPT bên ngoài và các ứng viên phân loại mẫu do ChatGPT soạn, chưa xác minh.
+3. Bước Báo cáo: xuất prompt theo ngữ cảnh hiện tại và nhập JSON/ZIP báo cáo; chặn số, cảnh báo hoặc context_hash không khớp. Không tự sửa hash để ép nhập.
+4. Có bản nháp quy tắc không cần API để kiểm tra PDF; ghi rõ RULE_BASED, không tính là LLM/Gemini chạy thành công.
+5. HS04 sai chủ sao kê và HS02 thiếu nguồn phải tiếp tục bị chặn xác minh thu nhập. Không tự tạo xác nhận hoặc duyệt vay.
+6. Tạo gói cập nhật mới v0.7; giữ bản v0.6 gốc và Secrets.

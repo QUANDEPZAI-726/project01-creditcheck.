@@ -1,0 +1,40 @@
+CREDITCHECK v0.7 — CẬP NHẬT VÀ THỬ WEB
+
+CẬP NHẬT
+Giải nén CreditCheck_GiaoDien_v07_CAP_NHAT.zip vào thư mục mới.
+Upload đúng 3 tệp lên ngoài cùng repository GitHub đang chạy:
+1. Project01_CreditCheck_Gemini_v07.zip
+2. streamlit_app.py (thay tệp chạy v0.6)
+3. requirements.txt (thay tệp cũ)
+Commit changes. Giữ main file path là streamlit_app.py và giữ Secrets.
+Không upload nguyên gói CAP_NHAT làm tệp chạy. Chờ Streamlit cập nhật; nếu chưa đổi, Reboot app.
+Không có thay đổi nào tự được đẩy lên GitHub hoặc web live.
+
+THỬ HS03 KHÔNG GỌI GEMINI
+1. Tổng quan: chọn HS03, bấm Mở hồ sơ đã chọn. Xem mã hồ sơ đang mở.
+2. Bước 2 Kiểm tra: đối chiếu APP (30 triệu) và INC (20 triệu). Điền tên, ghi chú; tích đã đối chiếu, bấm Xác nhận phần trích xuất.
+3. Mở Dùng kết quả LLM đã lưu · phân loại giao dịch. Bấm Nạp ứng viên ChatGPT đã lưu · HS03. Đây là ứng viên đã soạn trong quá trình cập nhật, không phải Gemini mới chạy.
+4. Xem 9 giao dịch, mở sao kê và kiểm tra: 3 khoản lương 20 triệu/tháng, không tính hoàn tiền/tiền ra.
+5. Điền người xác minh và ghi rõ vì sao dùng lương sao kê 20 triệu thay vì khai báo 30 triệu. Xem kỳ 01/07–30/09/2026; chỉ tích ba ô sau khi thực sự đối chiếu. Bấm Xác minh thu nhập và tính chỉ số.
+6. Bước 3: thu nhập 20 triệu; trả góp khoảng 7.061.021 đồng; DTI 50,31%; lệch thu nhập 50%. Vẫn có cảnh báo, không phải duyệt vay.
+7. Bước 4: chọn một trong hai cách:
+   a. Tải prompt báo cáo, đưa vào ChatGPT. Nhập JSON trả về và tên model, tích xác nhận đã nhận kết quả LLM. Web kiểm tra hash ngữ cảnh, số và cảnh báo.
+   b. Để thử PDF ngay: bấm Tạo bản nháp quy tắc · không dùng API. Báo cáo ghi rõ quy tắc Python, không phải LLM.
+8. Đọc báo cáo, tải PDF. Chỉ xác nhận nội dung sau khi thực sự kiểm tra. Có thể tải PDF nháp trước khi xác nhận.
+
+HS04
+Nạp ứng viên sau khi đối chiếu trích xuất. Sao kê SYN-P904 không khớp người vay SYN-P004, nên KHÔNG xác minh thu nhập. Bước 3 xem căn cứ; Bước 4 tạo bản nháp quy tắc hoặc dùng prompt LLM để xuất PDF có cảnh báo và chỉ số Chưa có.
+
+HS05
+Ứng viên giữ ba khoản từ cá nhân ở nhãn uncertain/Chưa rõ. Không tự gán thành lương hoặc bỏ qua. Cần bổ sung căn cứ thực sự rồi sửa nhãn có ghi chú; chưa đủ căn cứ thì giữ chặn và xuất báo cáo nháp ghi giới hạn.
+
+NHẬP JSON/ZIP ĐÃ LƯU
+Bước 2 và Bước 4 đều có ô chọn JSON/ZIP hoặc dán JSON. ZIP báo cáo cũ chỉ lấy ứng viên kết quả, KHÔNG khôi phục xác nhận của người khác. Phân loại phải khớp mã hồ sơ, SHA nguồn và mọi giao dịch.
+Báo cáo cũ chỉ nhập được nếu khớp context_hash của phiên hiện tại. Khi khác: tải prompt mới và xin LLM tạo lại, không sửa số/hash để ép nhập.
+ZIP chứa báo cáo quy tắc bị chặn khi nhập thành báo cáo LLM.
+
+Ý NGHĨA CÁC NGUỒN
+API_DIRECT: Gemini gọi trực tiếp.
+ASSISTED: kết quả LLM bên ngoài đã lưu/nhập, cần con người kiểm tra.
+RULE_BASED: bản nháp quy tắc Python, không tính là kết quả LLM.
+Tất cả là dữ liệu giả lập và không có quyết định duyệt vay.

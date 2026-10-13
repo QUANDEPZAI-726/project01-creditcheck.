@@ -1,4 +1,4 @@
-"""Deployment entry point for the intact CreditCheck v0.6 source bundle."""
+"""Deployment entry point for the intact CreditCheck v0.7 source bundle."""
 from pathlib import Path
 import hashlib
 import runpy
@@ -7,20 +7,20 @@ import tempfile
 import zipfile
 import streamlit as st
 
-BUNDLE=Path(__file__).resolve().parent/'Project01_CreditCheck_Gemini_v06.zip'
+BUNDLE=Path(__file__).resolve().parent/'Project01_CreditCheck_Gemini_v07.zip'
 
 @st.cache_resource
 def unpack_bundle():
-    expected='1a0fd9ef7e4821089fb59abce7141a6038d7ad6d1505d67ea6ad45c680475a1e'
+    expected='68fb1be3126d55a9f530c384fe341702e87a02c6ae680579f5c5f3bed2bdc3c0'
     if hashlib.sha256(BUNDLE.read_bytes()).hexdigest()!=expected:
-        raise ValueError('ZIP giao diện không đúng bản v0.6. Upload lại tệp gốc trong gói cập nhật.')
-    folder=Path(tempfile.mkdtemp(prefix='creditcheck_ui06_'))
+        raise ValueError('ZIP giao diện không đúng bản v0.7. Upload lại tệp gốc trong gói cập nhật.')
+    folder=Path(tempfile.mkdtemp(prefix='creditcheck_ui07_'))
     with zipfile.ZipFile(BUNDLE) as archive:archive.extractall(folder)
     return folder
 
 folder=unpack_bundle()
 # Source modules can survive a Streamlit rerun; switch to the new bundle once.
-for name in ('core','phase2','phase3','traceability','gemini_service','sample_data','presentation','pdf_report'):
+for name in ('core','phase2','phase3','traceability','gemini_service','sample_data','presentation','pdf_report','assisted_io'):
     module=sys.modules.get(name)
     if module is not None and getattr(module,'__file__',None) and not Path(module.__file__).resolve().is_relative_to(folder):
         del sys.modules[name]
