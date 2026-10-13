@@ -1,0 +1,123 @@
+{
+  "case_id": "HS01",
+  "source_sha256": "01ed94c6ce8af82c4a689d9578d06956507ec40a2b4c0eeec13819ce0eb25003",
+  "transactions": [
+    {
+      "transaction_id": "HS01-T0701",
+      "label": "salary",
+      "reason": "Khoản tiền vào từ Công ty Giả lập Sao Mai, khớp đơn vị làm việc; nội dung ghi lương net tháng 07/2026.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0701",
+          "quote": "LUONG NET THANG 07/2026"
+        }
+      ]
+    },
+    {
+      "transaction_id": "HS01-T0702",
+      "label": "other",
+      "reason": "Giao dịch tiền ra chi tiêu, không phải thu nhập lương.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0702",
+          "quote": "CHI TIEU THANG 07/2026"
+        }
+      ]
+    },
+    {
+      "transaction_id": "HS01-T0703",
+      "label": "other",
+      "reason": "Khoản hoàn tiền mua hộ, không phải tiền lương.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0703",
+          "quote": "HOAN TIEN MUA HO THANG 07/2026"
+        }
+      ]
+    },
+    {
+      "transaction_id": "HS01-T0801",
+      "label": "salary",
+      "reason": "Khoản tiền vào từ Công ty Giả lập Sao Mai, khớp đơn vị làm việc; nội dung ghi lương net tháng 08/2026.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0801",
+          "quote": "LUONG NET THANG 08/2026"
+        }
+      ]
+    },
+    {
+      "transaction_id": "HS01-T0802",
+      "label": "other",
+      "reason": "Giao dịch tiền ra chi tiêu, không phải thu nhập lương.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0802",
+          "quote": "CHI TIEU THANG 08/2026"
+        }
+      ]
+    },
+    {
+      "transaction_id": "HS01-T0803",
+      "label": "other",
+      "reason": "Khoản hoàn tiền mua hộ, không phải tiền lương.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0803",
+          "quote": "HOAN TIEN MUA HO THANG 08/2026"
+        }
+      ]
+    },
+    {
+      "transaction_id": "HS01-T0901",
+      "label": "salary",
+      "reason": "Khoản tiền vào từ Công ty Giả lập Sao Mai, khớp đơn vị làm việc; nội dung ghi lương net tháng 09/2026.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0901",
+          "quote": "LUONG NET THANG 09/2026"
+        }
+      ]
+    },
+    {
+      "transaction_id": "HS01-T0902",
+      "label": "other",
+      "reason": "Giao dịch tiền ra chi tiêu, không phải thu nhập lương.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0902",
+          "quote": "CHI TIEU THANG 09/2026"
+        }
+      ]
+    },
+    {
+      "transaction_id": "HS01-T0903",
+      "label": "other",
+      "reason": "Khoản hoàn tiền mua hộ, không phải tiền lương.",
+      "evidence": [
+        {
+          "document_id": "HS01-BANK",
+          "locator_type": "csv_transaction_id",
+          "locator": "HS01-T0903",
+          "quote": "HOAN TIEN MUA HO THANG 09/2026"
+        }
+      ]
+    }
+  ]
+}

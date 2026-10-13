@@ -1,0 +1,107 @@
+{
+  "case_id": "HS01",
+  "context_hash": "37ffbadd2da54dae1f3fc51a62c54654943a3c80ec87caa4000696d942dd0eae",
+  "review_status": "Human review required",
+  "key_information": {
+    "full_name": "Nguyễn An Minh",
+    "borrower_id": "SYN-P001",
+    "employer": "Công ty Giả lập Sao Mai",
+    "loan_principal_vnd": 100000000,
+    "term_months": 24,
+    "net_monthly_income_vnd": 20000000,
+    "existing_monthly_debt_vnd": 2000000
+  },
+  "metrics": {
+    "monthly_payment_vnd": 4707347,
+    "validated_monthly_income_vnd": 20000000.0,
+    "dti_pct": 33.54,
+    "income_gap_pct": 0.0
+  },
+  "risk_flags": [],
+  "missing_information": [],
+  "overview": [
+    {
+      "text": "HS01 là hồ sơ giả lập của Nguyễn An Minh, làm việc tại Công ty Giả lập Sao Mai; đề nghị vay 100.000.000 đồng trong 24 tháng. Hồ sơ gồm đơn vay, xác nhận việc làm/thu nhập và sao kê.",
+      "refs": [
+        "CASE",
+        "HS01-APP",
+        "HS01-INC",
+        "HS01-BANK"
+      ]
+    },
+    {
+      "text": "Lương tháng 07, 08 và 09/2026 đều là 20.000.000 đồng. Ba khoản lương được tính vào thu nhập; khoản hoàn tiền mua hộ và giao dịch tiền ra được loại. Nhật ký ghi nhận Anh Quân đã kiểm tra nguồn thu; đây là xác nhận trong bài tập, danh tính và tài liệu không được xác minh độc lập.",
+      "refs": [
+        "HS01-BANK",
+        "REVIEW"
+      ]
+    }
+  ],
+  "metric_explanations": [
+    {
+      "text": "Python tính khoản trả góp mới 4.707.347 đồng/tháng với gốc 100.000.000 đồng, kỳ hạn 24 tháng và lãi suất danh nghĩa giả lập 12%/năm. Mô hình trả góp đều trên dư nợ giảm dần, chưa gồm phí hoặc bảo hiểm.",
+      "refs": [
+        "METRICS",
+        "CONFIG",
+        "HS01-APP"
+      ]
+    },
+    {
+      "text": "DTI là 33,54%: tổng nghĩa vụ nợ hiện tại 2.000.000 đồng/tháng cộng khoản trả góp mới, chia thu nhập đã được người dùng xác minh 20.000.000 đồng/tháng. Giá trị này chưa vượt ngưỡng cảnh báo bài tập 40%; không chứng minh khả năng trả nợ và không phải quyết định cấp tín dụng.",
+      "refs": [
+        "METRICS",
+        "CONFIG",
+        "REVIEW"
+      ]
+    },
+    {
+      "text": "Chênh lệch thu nhập là 0% giữa mức khai báo 20.000.000 đồng/tháng và lương bình quân sao kê đã kiểm tra. Chưa phát hiện cảnh báo thu nhập theo ngưỡng giả lập lớn hơn 20%; kết quả chỉ áp dụng cho dữ liệu và kỳ sao kê đang có.",
+      "refs": [
+        "METRICS",
+        "CONFIG",
+        "HS01-APP",
+        "HS01-BANK"
+      ]
+    }
+  ],
+  "limitations": [
+    {
+      "text": "Chưa phát hiện mục thiếu hoặc cảnh báo theo các phép kiểm tra đã cài đặt cho HS01. Điều này không chứng minh hồ sơ đầy đủ cho thẩm định thực tế: nghĩa vụ nợ là khai báo; chưa có xác minh độc lập về dư nợ, tính thật của tài liệu, chi phí sinh hoạt hoặc thu nhập sau kỳ sao kê.",
+      "refs": [
+        "CASE",
+        "REVIEW",
+        "SCOPE"
+      ]
+    },
+    {
+      "text": "Các ngưỡng 40% và 20%, lãi suất 12%/năm là giả định phục vụ học tập, không phải quy định hay chính sách của ngân hàng. Chưa tính phí và bảo hiểm. Trạng thái Human review required được giữ để người thẩm định tiếp tục xem xét; xác nhận nội dung báo cáo không duyệt khoản vay.",
+      "refs": [
+        "CONFIG",
+        "SCOPE"
+      ]
+    }
+  ],
+  "verification_questions": [
+    {
+      "text": "Nghĩa vụ nợ khai báo 2.000.000 đồng/tháng đã bao gồm tất cả khoản vay, thẻ tín dụng và nghĩa vụ trả nợ khác chưa? Người thẩm định cần đối chiếu nguồn độc lập nào?",
+      "refs": [
+        "HS01-APP",
+        "SCOPE"
+      ]
+    },
+    {
+      "text": "Có cần sao kê các tháng tiếp theo và xác nhận từ đơn vị làm việc để đánh giá tính liên tục của nguồn lương sau tháng 09/2026 không?",
+      "refs": [
+        "HS01-BANK",
+        "HS01-INC"
+      ]
+    },
+    {
+      "text": "Lãi suất, phí và bảo hiểm thực tế dự kiến là bao nhiêu; khoản trả góp thay đổi thế nào khi cập nhật các giả định? Người thẩm định cần xác định trước khi sử dụng kết quả.",
+      "refs": [
+        "CONFIG",
+        "METRICS"
+      ]
+    }
+  ]
+}
