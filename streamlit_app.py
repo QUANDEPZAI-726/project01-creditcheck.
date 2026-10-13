@@ -26,3 +26,7 @@ for name in ('core','phase2','phase3','traceability','gemini_service','sample_da
         del sys.modules[name]
 sys.path.insert(0,str(folder/'app'))
 runpy.run_path(str(folder/'streamlit_app.py'),run_name='__main__')
+logo_path = Path(__file__).resolve().parent / "logo.png"
+
+if logo_path.exists():
+    st.sidebar.image(str(logo_path), width=160)
