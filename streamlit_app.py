@@ -1,4 +1,4 @@
-"""Deployment entry point for CreditCheck v0.20."""
+"""Deployment entry point for CreditCheck v0.21."""
 from pathlib import Path
 import hashlib
 import os
@@ -9,20 +9,20 @@ import zipfile
 import streamlit as st
 
 DEPLOY_ROOT = Path(__file__).resolve().parent
-BUNDLE = DEPLOY_ROOT / 'Project01_CreditCheck_Gemini_v20.zip'
+BUNDLE = DEPLOY_ROOT / 'Project01_CreditCheck_Gemini_v21.zip'
 
 @st.cache_resource
 def unpack_bundle():
-    expected = '865270048addd94c366e77562a1ebbbb2f2a90a8a7dd6066e55ff6479da8fdff'
+    expected = '662f37a59b50da5e9c9fb77bd44db16e108346874019b56091d693dbd5bb31e5'
     if hashlib.sha256(BUNDLE.read_bytes()).hexdigest() != expected:
-        raise ValueError('ZIP giao diện không đúng bản v0.20. Upload lại nguyên ZIP trong gói cập nhật.')
-    folder = Path(tempfile.mkdtemp(prefix='creditcheck_ui20_'))
+        raise ValueError('ZIP giao diện không đúng bản v0.21. Upload lại nguyên ZIP trong gói cập nhật.')
+    folder = Path(tempfile.mkdtemp(prefix='creditcheck_ui21_'))
     with zipfile.ZipFile(BUNDLE) as archive:
         archive.extractall(folder)
     return folder
 
 folder = unpack_bundle()
-for name in ('core','phase2','phase3','traceability','gemini_service','sample_data','presentation','pdf_report','assisted_io','input_security','privacy_excel','ui_shell','design_tokens'):
+for name in ('core','phase2','phase3','traceability','gemini_service','sample_data','presentation','pdf_report','assisted_io','input_security','privacy_excel','ui_shell','design_tokens','assistant_ui'):
     module = sys.modules.get(name)
     if module is not None and getattr(module,'__file__',None) and not Path(module.__file__).resolve().is_relative_to(folder):
         del sys.modules[name]
