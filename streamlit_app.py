@@ -1,4 +1,4 @@
-"""Deployment entry point for CreditCheck v0.25. Upload with the matching bundle."""
+"""Deployment entry point for CreditCheck v0.26. Upload with the matching bundle."""
 from pathlib import Path
 import hashlib
 import os
@@ -9,18 +9,18 @@ import zipfile
 import streamlit as st
 
 DEPLOY_ROOT = Path(__file__).resolve().parent
-BUNDLE = DEPLOY_ROOT / 'Project01_CreditCheck_Gemini_v25.zip'
-EXPECTED = '1e2210f073a5b4403a51743ac892f2c8b604b10bc09e3600b3866be7d83e1f26'
+BUNDLE = DEPLOY_ROOT / 'Project01_CreditCheck_Gemini_v26.zip'
+EXPECTED = '90add8b921823cb5a6585dec3ab340a281f5818bfee995925c7b8f05c5ffbac2'
 
 @st.cache_resource
 def unpack_bundle(expected):
     if not BUNDLE.exists():
-        st.error('Thiếu Project01_CreditCheck_Gemini_v25.zip. Upload ZIP này cạnh streamlit_app.py rồi khởi động lại app.')
+        st.error('Thiếu Project01_CreditCheck_Gemini_v26.zip. Upload ZIP này cạnh streamlit_app.py rồi khởi động lại app.')
         st.stop()
     if hashlib.sha256(BUNDLE.read_bytes()).hexdigest() != expected:
-        st.error('ZIP và file khởi chạy chưa cùng bản v0.25. Thay cả streamlit_app.py và nguyên Project01_CreditCheck_Gemini_v25.zip trong cùng một lần cập nhật. Không giải nén ZIP này trên GitHub.')
+        st.error('ZIP và file khởi chạy chưa cùng bản v0.26. Thay cả streamlit_app.py và nguyên Project01_CreditCheck_Gemini_v26.zip trong cùng một lần cập nhật. Không giải nén ZIP này trên GitHub.')
         st.stop()
-    folder = Path(tempfile.mkdtemp(prefix='creditcheck_ui25_'))
+    folder = Path(tempfile.mkdtemp(prefix='creditcheck_ui26_'))
     with zipfile.ZipFile(BUNDLE) as archive:
         archive.extractall(folder)
     return folder
