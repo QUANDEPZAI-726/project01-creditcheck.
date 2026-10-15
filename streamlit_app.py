@@ -1,4 +1,4 @@
-"""Deployment entry point for CreditCheck v0.17."""
+"""Deployment entry point for CreditCheck v0.18."""
 from pathlib import Path
 import hashlib
 import os
@@ -9,14 +9,14 @@ import zipfile
 import streamlit as st
 
 DEPLOY_ROOT = Path(__file__).resolve().parent
-BUNDLE = DEPLOY_ROOT / 'Project01_CreditCheck_Gemini_v17.zip'
+BUNDLE = DEPLOY_ROOT / 'Project01_CreditCheck_Gemini_v18.zip'
 
 @st.cache_resource
 def unpack_bundle():
-    expected = '925abb772eb139f8f90d3786370327463dd52450b691e908582ab70aaccc073f'
+    expected = '8729d3531893dd735ed66ec31dad414583840b85c8c77a9e6f66423667b76e33'
     if hashlib.sha256(BUNDLE.read_bytes()).hexdigest() != expected:
-        raise ValueError('ZIP giao diện không đúng bản v0.17. Upload lại nguyên ZIP trong gói cập nhật.')
-    folder = Path(tempfile.mkdtemp(prefix='creditcheck_ui17_'))
+        raise ValueError('ZIP giao diện không đúng bản v0.18. Upload lại nguyên ZIP trong gói cập nhật.')
+    folder = Path(tempfile.mkdtemp(prefix='creditcheck_ui18_'))
     with zipfile.ZipFile(BUNDLE) as archive:
         archive.extractall(folder)
     return folder
