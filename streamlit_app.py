@@ -1,4 +1,4 @@
-"""Deployment entry point for CreditCheck v0.29. Upload with the matching bundle."""
+"""Deployment entry point for CreditCheck v0.30. Upload with the matching bundle."""
 from pathlib import Path
 import hashlib
 import os
@@ -9,24 +9,24 @@ import zipfile
 import streamlit as st
 
 DEPLOY_ROOT = Path(__file__).resolve().parent
-BUNDLE = DEPLOY_ROOT / 'Project01_CreditCheck_Gemini_v29.zip'
-EXPECTED = 'b39d92dfe6e07221246900bb17e74328572b1504ebb991cc8dcece6be3db5785'
+BUNDLE = DEPLOY_ROOT / 'Project01_CreditCheck_Gemini_v30.zip'
+EXPECTED = 'dd0352781cb88108a96c47492c3d4aee158f0455b833254af96a8a9360526203'
 
 @st.cache_resource
 def unpack_bundle(expected):
     if not BUNDLE.exists():
-        st.error('Thiếu Project01_CreditCheck_Gemini_v29.zip. Upload ZIP này cạnh streamlit_app.py rồi khởi động lại app.')
+        st.error('Thiếu Project01_CreditCheck_Gemini_v30.zip. Upload ZIP này cạnh streamlit_app.py rồi khởi động lại app.')
         st.stop()
     if hashlib.sha256(BUNDLE.read_bytes()).hexdigest() != expected:
-        st.error('ZIP và file khởi chạy chưa cùng bản v0.29. Thay cả streamlit_app.py và nguyên Project01_CreditCheck_Gemini_v29.zip trong cùng một lần cập nhật. Không giải nén ZIP này trên GitHub.')
+        st.error('ZIP và file khởi chạy chưa cùng bản v0.30. Thay cả streamlit_app.py và nguyên Project01_CreditCheck_Gemini_v30.zip trong cùng một lần cập nhật. Không giải nén ZIP này trên GitHub.')
         st.stop()
-    folder = Path(tempfile.mkdtemp(prefix='creditcheck_ui29_'))
+    folder = Path(tempfile.mkdtemp(prefix='creditcheck_ui30_'))
     with zipfile.ZipFile(BUNDLE) as archive:
         archive.extractall(folder)
     return folder
 
 folder = unpack_bundle(EXPECTED)
-for name in ('core','phase2','phase3','traceability','gemini_service','sample_data','presentation','pdf_report','assisted_io','input_security','privacy_excel','ui_shell','design_tokens','assistant_ui','financial_charts','experience','intake_ui','presentation_mode'):
+for name in ('core','phase2','phase3','traceability','gemini_service','sample_data','presentation','pdf_report','assisted_io','input_security','privacy_excel','ui_shell','design_tokens','assistant_ui','financial_charts','experience','intake_ui','presentation_mode','api_contracts','api_diagnostics'):
     module = sys.modules.get(name)
     if module is not None and getattr(module,'__file__',None) and not Path(module.__file__).resolve().is_relative_to(folder):
         del sys.modules[name]
